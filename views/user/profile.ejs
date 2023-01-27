@@ -1,0 +1,34 @@
+
+<%- include('../partials/header.ejs')%>
+<div class = "content">
+    <h2>Welcome, <%=user.firstName%></h2>
+    <%if(trades.length) {%>
+        <p>You have created the following trades</p>
+        <%trades.forEach(trade =>{%>
+            <a href = '/trades/<%=trade.id%>'><p><%=trade.name%></p></a>
+       <% });
+    } else {%>
+        <p>You have not created any trades</p>
+    <%}%>
+    <br>
+    <%if(trades.length) {%>
+        <p>The following trades are pending</p>
+        <%trades.forEach(trade =>{%>
+            <%if (trade.offerForItem != null || trade.offerFrom != null) {%> <a href = '/trades/<%=trade.id%>'><p><%=trade.name%></p></a> <%}%>
+        <% });
+        } else {%>
+            <p>You have no pending trades</p>
+    <%}%>
+
+    <%if(user.watching) {%>
+        <p>You are watching the following trades</p>
+        <%const watchlist = user.watching.split(";")%>
+        <%alldocs.forEach(trade =>{%>
+            <%if (watchlist.includes(trade.id)) {%> <a href = '/trades/<%=trade.id%>'><p><%=trade.name%></p></a> <%}%>
+        <% });
+        } else {%>
+            <p>You are not watching any trades</p>
+    <%}%>
+
+    </div>
+    <%- include('../partials/footer.ejs')%>

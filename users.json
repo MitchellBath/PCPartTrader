@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "639809d1637375532d8ba5ee"
+  },
+  "firstName": "Mitch",
+  "lastName": "Bath",
+  "email": "mbath@uncc.edu",
+  "password": "$2b$10$quhnS8YAz5DUxBqMvmnmauhPKY/eal/EGR/JgxdUfUD3pGZcDmKPi",
+  "__v": 0,
+  "watching": "63980aafafce0d4536395386;"
+},{
+  "_id": {
+    "$oid": "639809df637375532d8ba5f0"
+  },
+  "firstName": "John",
+  "lastName": "Test",
+  "email": "jtest@uncc.edu",
+  "password": "$2b$10$fN/Rz/Z1vVAmeGtAr.oP8eC8HXbdXgXLU3eJPPa8eQMjB.vLdyWr2",
+  "__v": 0,
+  "watching": ""
+}]

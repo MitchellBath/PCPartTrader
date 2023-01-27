@@ -1,0 +1,29 @@
+<%- include('../partials/header.ejs')%>
+<div class = "content">
+    <form method = "POST" action = "/trades/<%=trade.id%>?_method=PUT">
+        <table>
+            <tr>
+                <td><label for="name">Part Name</label></td>
+                <td><input type="text" id="name" name="name" class = "fixed-width"></td>
+            </tr>
+            <tr>
+                <td><label for="category">Category</label></td>
+                <td><select id="category" name="category" class = "fixed-width">
+                    <option value="parts">PC Parts</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="software">Software</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class = "align-top"><label for="description">Description or Specifications</label></td>
+                <td><textarea rows="5" id="description" name="description" class = "fixed-width"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" class = "align-right"><button>Submit</button></td>
+            </tr>
+        </table>         
+    </form>
+
+    </div>
+    <%- include('../partials/footer.ejs')%>

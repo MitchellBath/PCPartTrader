@@ -1,0 +1,101 @@
+<%- include('../partials/header.ejs')%>
+    <div class="content">
+        <h4>
+            <%= trade.title%>
+        </h4>
+        <small>Posted <%= trade.createdAt%> <br><br><strong>
+                    <%= trade.name%>
+                </strong></small>
+
+        <img src="<%= trade.image%>" alt="<%=trade.description%>" style="width:300px;height:200px;">
+
+        <p>Category: </p>
+        <div text-transform="capitalize" id="trade">
+            <%= trade.category%>
+        </div>
+        <p>Description/Specs: </p>
+        <div id="trade">
+            <%= trade.description%>
+        </div>
+        <p>Status: </p>
+        <div id="trade">
+            <%= trade.status%>
+        </div>
+        <form>
+            <%if (trade.offerForItem==null && trade.offerFrom==null && trade.status=="Available" && user ==trade.author.id) {%><button type="submit" formmethod="GET" formaction="/trades/<%= trade.id%>/edit">Edit</button><% }%>
+            <%if (trade.offerForItem==null && trade.offerFrom==null && trade.status=="Available" && user ==trade.author.id) {%><button type="submit" formmethod="POST" formaction="/trades/<%= trade.id%>?_method=DELETE">Delete</button>
+                <%}%>
+                    <%if (trade.status=="Available" && user !=trade.author.id) {%><button type="submit" formmethod="GET"
+                            formaction="/trades/<%= trade.id%>/offer">Offer Trade</button>
+                        <% }%>
+        </form>
+
+        <%if (trade.offerForItem && user==trade.author.id) {%>
+            <form method="POST" action="/trades/<%=trade.id%>?_method=PUT">
+                <table>
+                    <tr>
+                        <input type="hidden" id="name" name="name" value="<%=trade.name%>">
+                        <input type="hidden" id="category" name="category" value="<%=trade.category%>">
+                        <input type="hidden" id="description" name="description" value="<%=trade.description%>">
+                        <input type="hidden" id="status" name="status" value="Available">
+                        <input type="hidden" id="offerFrom" name="offerFrom" value="Takeback">
+                        <input type="hidden" id="offerForItem" name="offerForItem" value="<%=trade.offerForItem%>">
+
+                        <td><button type="submit">
+                                Take Back Offer
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <%}%>
+
+            <%if (trade.offerFrom && user==trade.author.id) {%>
+                <p><B>Trade offer for <%=dispname%></B></p>
+                <form method="POST" action="/trades/<%=trade.id%>?_method=PUT">
+                    <table>
+                        <tr>
+                            <input type="hidden" id="name" name="name" value="<%=trade.name%>">
+                            <input type="hidden" id="category" name="category" value="<%=trade.category%>">
+                            <input type="hidden" id="description" name="description" value="<%=trade.description%>">
+                            <input type="hidden" id="status" name="status" value="Available">
+                            <input type="hidden" id="offerFrom" name="offerFrom" value="<%=trade.offerFrom%>">
+                            <input type="hidden" id="offerForItem" name="offerForItem" value="Accept">
+
+                            <td><button type="submit">
+                                    Accept
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <form method="POST" action="/trades/<%=trade.id%>?_method=PUT">
+                    <table>
+                        <tr>
+                            <input type="hidden" id="name" name="name" value="<%=trade.name%>">
+                            <input type="hidden" id="category" name="category" value="<%=trade.category%>">
+                            <input type="hidden" id="description" name="description" value="<%=trade.description%>">
+                            <input type="hidden" id="status" name="status" value="Available">
+                            <input type="hidden" id="offerFrom" name="offerFrom" value="<%=trade.offerFrom%>">
+                            <input type="hidden" id="offerForItem" name="offerForItem" value="Decline">
+
+                            <td><button type="submit">
+                                    Decline
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <%}%>
+            
+            <br><p>-</p>
+            <form method="POST" action="/users/profile?_method=PUT">
+                <table>
+                    <tr>
+                        <input type="hidden" id="id" name="id" value="<%=trade.id%>">
+                        <td><button type="submit">Add to Watchlist</td>
+                    </tr>
+                </table>
+            </form>
+            
+
+
+    </div>
+    <%- include('../partials/footer.ejs')%>

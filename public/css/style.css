@@ -1,0 +1,49 @@
+h1 {
+    color:aliceblue
+}
+
+.header {
+background-color:darkcyan;
+top: 0px;
+}
+
+.gennav {
+    top: 0px; /* Makes it float with the scroll! */
+    overflow: hidden;
+    background-color: cadetblue;
+    position: sticky;
+  }
+
+.gennav a {
+    background-color: cadetblue;
+    float: left;
+    display: block;
+    padding: 10px 25px;
+    text-align: center;
+}
+.gennav a:hover {
+    background-color: aquamarine;
+}
+
+.usernav {
+    position: right;
+    right: 10px;
+    float: right;
+    display: inline;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: cadetblue;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+body {
+    font-size: 25px;
+    background-color: azure;
+    color:black;
+}

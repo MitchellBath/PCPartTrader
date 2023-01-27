@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs')%>
+    <div class="content">
+        <p>Select an item to offer for <%=original.name%>:</p>
+
+        <%if(trades.length) {%>
+            <%trades.forEach(trade=>{%>
+                <%if(trade.status == "Available") {%>
+                <form method="POST" action="/trades/<%=trade.id%>?_method=PUT">
+                    <table>
+                        <tr>
+                            <input type="hidden" id="name" name="name" value="<%=trade.name%>">
+                            <input type="hidden" id="category" name="category" value="<%=trade.category%>">
+                            <input type="hidden" id="description" name="description" value="<%=trade.description%>">
+                            <input type="hidden" id="status" name="status" value="Unavailable">
+                            <input type="hidden" id="offerForItem" name="offerForItem" value="<%=original.id%>">
+
+                            <td><button type="submit">
+                                    <%=trade.name%>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <% }})} else {%>
+                    <tr>
+                        <p>No trades to offer. Start trading!</p>>
+                    </tr>
+                    <%} %>
+
+    </div>
+    <%- include('../partials/footer.ejs')%>

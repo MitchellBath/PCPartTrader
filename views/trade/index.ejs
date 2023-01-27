@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <%if(trades.length) {%>
+            <p>Select a trade to view</p>
+
+            <br><p><strong>Parts:</p></strong>
+            <%trades.forEach(trade=>{%>
+                <%if(trade.category=='parts') {%>
+                    <a href = "/trades/<%=trade.id%>"><p><%=trade.name%></p></a>
+                <% }%>
+            <% }); %>
+
+            <br><p><strong>Accessories:</p></strong>
+            <%trades.forEach(trade=>{%>
+                <%if(trade.category=='accessories') {%>
+                    <a href = "/trades/<%=trade.id%>"><p><%=trade.name%></p></a>
+                <% }%>
+            <% }); %>
+
+            <br><p><strong>Software:</p></strong>
+            <%trades.forEach(trade=>{%>
+                <%if(trade.category=='software') {%>
+                    <a href = "/trades/<%=trade.id%>"><p><%=trade.name%></p></a>
+                <% }%>
+            <% }); %>
+            <br><br><br><br>
+
+        <% } else { %>
+            <p>>There are no trades to display.</p>
+        <%}%>
+    </div>
+    <%- include('../partials/footer.ejs')%>
+    

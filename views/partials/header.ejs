@@ -1,0 +1,45 @@
+
+<!DOCTYPE HTML> <html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>PC Part Trader</title>
+</head>
+
+<div class="header">
+    <a href="/"><img src="/images/logo.png"></a>
+    <h1  style="display:inline">PC Part Trader</h1>
+    <div class="gennav" style="float:right; font-size:20px; display:block">
+        <a href="/trades/new">Start Trading! >>></a>
+        <%if(!user) {%>
+            <a href='/users/login'>Login</a>
+            <a href='/users/new'>Sign Up</a>
+        <%} else {%>
+            <a href='/users/profile'>Profile</a>
+            <a href='/users/logout'>Logout</a>
+        <%}%>
+    </div>
+</div>
+
+<div class="gennav">
+    <a href="/">Home</a>
+    <a href="/trades">Trade Board</a>
+</div>
+
+
+<% if(errorMessages.length > 0) {%>
+    <% errorMessages.forEach(message=>{%>
+        <div class='error'>
+            <%=message%>
+        </div>
+        <%});%>
+            <%}%>
+
+                <% if(successMessages.length > 0) {%>
+
+                    <% successMessages.forEach(message=>{%>
+                        <div class='success'>
+                            <%=message%>
+                        </div>
+                        <%});%>
+                            <%}%>
